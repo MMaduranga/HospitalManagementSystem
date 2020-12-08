@@ -3,3 +3,4 @@ build.xml
 mainfest.mf
 /build/
 test
+nbproject/private/private.properties
