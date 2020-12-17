@@ -1,4 +1,4 @@
-package Classes;
+package Classes.SubClasses;
 
 import javax.swing.JFrame;
 import java.io.BufferedReader;
@@ -16,8 +16,8 @@ public class SignIn {
     private String strPassword;
     private String strUserMode;
 
-    private String[] filePath = {"src\\TxtFiles\\Admin.txt", "src\\TxtFiles\\MedicalOfficer.txt",""
-        + "src\\TxtFiles\\Pateint.txt", "src\\TxtFiles\\Receptionist.txt"};
+    private String[] filePath = {"src\\TxtFiles\\Admin.mov", "src\\TxtFiles\\MedicalOfficer.mov",""
+        + "src\\TxtFiles\\Pateint.mov", "src\\TxtFiles\\Receptionist.mov"};
 
     public SignIn(String userName, String password, String userMode) {
         setUserName(userName);//get user input add save it to veriable
@@ -60,7 +60,8 @@ public class SignIn {
         JFrame usersFrame = null;
 
         try {//to catch the error
-            FileReader readUserFile = new FileReader(selectUserMode());//open users file to read
+            FileSecurity fileSecurity=new FileSecurity(selectUserMode());
+            FileReader readUserFile = new FileReader(fileSecurity.setFilePathToTxt());//open users file to read
             BufferedReader readFile = new BufferedReader(readUserFile);
 
             String strLine = readFile.readLine();//save 1st line of users file to a string
@@ -100,6 +101,7 @@ public class SignIn {
             }
             readUserFile.close();//close the opened file
             readFile.close();
+            fileSecurity.setFilePathMOV();
         } catch (IOException e) {
 
         }

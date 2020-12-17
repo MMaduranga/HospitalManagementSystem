@@ -1,5 +1,6 @@
-package Classes;
-import Classes.Main;
+package Classes.MainClasses;
+import Classes.SubClasses.Main;
+import Classes.SubClasses.Main;
 import java.io.File;
 import java.time.LocalDate;
 

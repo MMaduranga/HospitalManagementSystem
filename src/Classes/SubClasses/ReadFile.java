@@ -1,11 +1,11 @@
-package Classes;
+package Classes.SubClasses;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import Classes.WriteFile;
+import Classes.SubClasses.WriteFile;
 
 public class ReadFile {
 
@@ -15,7 +15,8 @@ public class ReadFile {
         String[] selectedObjDetails = null;
 
         try {
-            FileReader readUserFile = new FileReader(filelocation);//open users file to read
+            FileSecurity fileSecurity = new FileSecurity(filelocation.toString());
+            FileReader readUserFile = new FileReader(fileSecurity.setFilePathToTxt());//open users file to read
             BufferedReader readFile = new BufferedReader(readUserFile);
 
             String strLine = readFile.readLine();//save 1st line of users file to a string
@@ -30,6 +31,7 @@ public class ReadFile {
                     if (strDetails[location].equals(primaryKey)) {
                         this.line = strLine;
                         selectedObjDetails = strDetails;
+
                         break;
                     }
                 } else if (strLine.charAt(0) == '|' && strNextLine != null && strNextLine.charAt(0) != '|') {//check the validation of 1st and 2nd lines
@@ -44,7 +46,9 @@ public class ReadFile {
 
                 strLine = strNextLine;//save next line of the txt file to rotate
             }
+
             readUserFile.close();//close the opened file
+            fileSecurity.setFilePathMOV();
             readFile.close();
 
         } catch (IOException e) {
@@ -58,7 +62,8 @@ public class ReadFile {
         ArrayList<String> linesArray = new ArrayList<>();
 
         try {
-            FileReader readUserFile = new FileReader(fileLocation);//open users file to read
+            FileSecurity fileSecurity = new FileSecurity(fileLocation.toString());
+            FileReader readUserFile = new FileReader(fileSecurity.setFilePathToTxt());//open users file to read
             BufferedReader readFile = new BufferedReader(readUserFile);
             String strLine = readFile.readLine();//save 1st line of users file to a string
             while (strLine != null) {//compare the line is not equals to null
@@ -68,7 +73,7 @@ public class ReadFile {
 
             readUserFile.close();//close the opened file
             readFile.close();
-            fileLocation.delete();
+            new File(fileSecurity.setFilePathToTxt()).delete();
             for (int count = 0; count < linesArray.size(); count++) {
                 if (linesArray.get(count).equals(this.line)) {
                     continue;
@@ -76,9 +81,9 @@ public class ReadFile {
                     new WriteFile().WriteInFile(linesArray.get(count), fileLocation);
                 }
             }
+            fileSecurity.setFilePathMOV();
         } catch (Exception e) {
         }
     }
-   
 
 }
