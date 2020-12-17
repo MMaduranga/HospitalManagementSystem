@@ -1,5 +1,5 @@
 
-package Classes;
+package Classes.SubClasses;
 
 import java.io.File;
 import javax.swing.JFileChooser;

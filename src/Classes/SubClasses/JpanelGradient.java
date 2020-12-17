@@ -1,4 +1,4 @@
-package Classes;
+package Classes.SubClasses;
 
 import java.awt.Color;
 import java.awt.GradientPaint;

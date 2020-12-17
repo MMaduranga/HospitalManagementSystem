@@ -1,5 +1,5 @@
 
-package Classes;
+package Classes.SubClasses;
 
 public class Main {
     
