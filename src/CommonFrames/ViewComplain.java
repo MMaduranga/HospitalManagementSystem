@@ -1,4 +1,4 @@
-package PateintInterface;
+package CommonFrames;
 
 import Controllers.JpanelGradient;
 import Controllers.ReadFile;
@@ -7,16 +7,17 @@ import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-public class PatientViewComplain1 extends javax.swing.JInternalFrame {
+public class ViewComplain extends javax.swing.JInternalFrame {
 
     ReadFile readFileObj = new ReadFile();
     String[] blankArray = {"", "", "", "", "", "", "", "", ""};
 
-    public PatientViewComplain1() {
+    public ViewComplain(String strUser) {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI basicinternalform = (BasicInternalFrameUI) this.getUI();
         basicinternalform.setNorthPane(null);
+        jLabel1.setText(strUser);
     }
 
     @SuppressWarnings("unchecked")
@@ -322,9 +323,7 @@ public class PatientViewComplain1 extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36))
         );
         jPanel6Layout.setVerticalGroup(
@@ -546,7 +545,7 @@ public class PatientViewComplain1 extends javax.swing.JInternalFrame {
 
     public void compareAppoinmentNo(String primarykey, int location) {
         if (primarykey.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please Enter ID Number");
+            JOptionPane.showMessageDialog(null, "Please Enter Phone Number");
         } else {
 
             try {
